@@ -1,0 +1,17 @@
+node_modules
+src/main/resources/public
+.DS_Store
+bin
+build
+.classpath
+.eclipse
+.gradle
+.project
+.settings
+out
+*.log
+.sass-cache
+*.index
+*.data
+classes
+exportToHtml
