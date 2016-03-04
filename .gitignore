@@ -9,6 +9,7 @@ build
 .project
 .settings
 out
+*.iml
 *.log
 .sass-cache
 *.index
