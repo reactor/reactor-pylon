@@ -58,7 +58,6 @@ public final class Pylon extends ReactivePeer<Buffer, Buffer, ReactiveChannel<Bu
 	private static final String CONSOLE_STATIC_ASSETS_PATH = "/assets";
 	private static final String CONSOLE_URL                = "/pylon";
 	private static final String CONSOLE_ASSETS_PREFIX      = "/assets";
-	private static final String CONSOLE_FAVICON            = "/favicon.ico";
 	private static final String HTML_DEPENDENCY_CONSOLE    = "/index.html";
 	private static final String CACHE_MANIFEST             = "/index.appcache";
 
@@ -112,8 +111,7 @@ public final class Pylon extends ReactivePeer<Buffer, Buffer, ReactiveChannel<Bu
 
 		final Publisher<Buffer> cacheManifest = Buffer.readFile(pylon.pathToStatic(CACHE_MANIFEST));
 
-		server.file(CONSOLE_FAVICON, pylon.pathToStatic(CONSOLE_FAVICON))
-		      .get(CACHE_MANIFEST, new CacheManifestHandler(cacheManifest))
+		server.get(CACHE_MANIFEST, new CacheManifestHandler(cacheManifest))
 		      .file(ChannelMappings.prefix(CONSOLE_URL), pylon.pathToStatic(HTML_DEPENDENCY_CONSOLE), null)
 		      .directory(CONSOLE_ASSETS_PREFIX,
 				      pylon.pathToStatic(CONSOLE_STATIC_ASSETS_PATH), new AssetsInterceptor());

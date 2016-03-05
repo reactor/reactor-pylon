@@ -1,0 +1,9 @@
+<ul>
+  <li [class.active]="isRouteActive('/Home')"><a [routerLink]="['/Home']">Dashboard</a></li>
+  <li [class.active]="isRouteActive('/Metric')"><a [routerLink]="['/Metric']">Metrics</a></li>
+  <li [class.active]="isRouteActive('/Flux')"><a [routerLink]="['/Flux']">Flux</a></li>
+  <li [class.active]="isRouteActive('/Host')"><a [routerLink]="['/Host']">Host</a></li>
+  <li [class.active]="isRouteActive('/Buffer')"><a [routerLink]="['/Buffer']">Buffers</a></li>
+  <li [class.active]="isRouteActive('/System')"><a [routerLink]="['/System']">System</a></li>
+  <li [class.active]="isRouteActive('/Log')"><a [routerLink]="['/Log']">Tail Logs</a></li>
+</ul>

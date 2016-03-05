@@ -1,0 +1,17 @@
+
+<div id="status"></div>
+
+<div id="application" *ngIf="!disabledSidebar && loaded">
+  <div id="application-left">
+    <sidebar-header></sidebar-header>
+  </div>
+
+  <div id="application-main">
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+<div *ngIf="disabledSidebar && loaded">
+  <router-outlet></router-outlet>
+</div>

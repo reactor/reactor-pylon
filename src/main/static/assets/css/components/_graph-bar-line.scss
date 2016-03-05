@@ -1,0 +1,71 @@
+@import '../variables';
+@import "compass";
+
+$graph-bar-line-border: #e8e8e8;
+$graph-bar-line-bar-height: 40px;
+$graph-bar-line-bar-bg: #f2f2f2;
+$graph-bar-line-bar-bg-active: $reactorPrimary;
+
+.graph {
+
+  &.graph-bar-line {
+    border: 5px solid $graph-bar-line-border;
+    margin-bottom: 1.8rem;
+    .bar-progress {
+      height: $graph-bar-line-bar-height;
+      background: $graph-bar-line-bar-bg;
+      position: relative;
+      .bar-active {
+        position: absolute;
+        background: $graph-bar-line-bar-bg-active;
+        overflow: hidden;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        height: $graph-bar-line-bar-height;
+        .bar-label {
+          color: white;
+          z-index: 1001;
+        }
+      }
+      .bar-label {
+        z-index: 999;
+        color: $reactorTextColor;
+        line-height: $graph-bar-line-bar-height;
+        padding-left: 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .bar-percent {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        line-height: $graph-bar-line-bar-height;
+        color: rgba(0, 0, 0, 0.2);
+        @include text-shadow(0 1px 0 rgba(255,255,255,.8));
+        letter-spacing: -1px;
+        font-weight: bold;
+        font-size: 18px;
+      }
+    }
+    .bar-line {
+      height: 90px;
+      .bar-chart {
+
+      }
+      .bar-metrics {
+        font-size: 11px;
+        font-weight: lighter;
+        line-height: 20px;
+        padding-top: 12px;
+        strong {
+          font-size: 13px;
+          font-weight: bold;
+          letter-spacing: -1px;
+        }
+      }
+    }
+  }
+
+}

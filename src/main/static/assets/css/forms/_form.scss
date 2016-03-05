@@ -1,0 +1,35 @@
+@import '../variables';
+@import "compass";
+
+$input-border-focus: #9ecf79;
+$input-border-bottom-focus: #56ab1f;
+$control-padding-y: 0.5rem;
+
+// Focus Mixin
+@mixin form-control-focus() {
+  &:focus {
+    border-color: $input-border-focus;
+    border-bottom-color: $input-border-bottom-focus;
+    outline: none;
+    $shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 0px white;
+    @include box-shadow($shadow);
+  }
+}
+
+// Form
+.form {
+  .control {
+    padding: $control-padding-y 0;
+    .control-label {
+      display: block;
+      font-weight: bold;
+      padding-bottom: 0.4rem;
+    }
+    .control-form {
+
+    }
+    &.center {
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+@import 'variables';
+@import "compass";
+
+// Replay
+#replay {
+  background: $reactorTextColor;
+  color: white;
+  position: absolute;
+  height: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  @include transition(height .2s ease-in-out);
+
+  &.show {
+    height: $reactorReplayHeight;
+  }
+}
+
+// Player (Replay)
+.player {
+  display: flex;
+  line-height: $reactorReplayHeight - 20px;
+  padding: 10px 0;
+  height: $reactorReplayHeight - 20px;
+  .player-actions {
+    padding: 0 1rem;
+    a {
+      color: white;
+      cursor: pointer;
+      padding: 0 0.3rem;
+      &:hover {
+        color: $reactorPrimary;
+        text-decoration: none;
+      }
+      &.disabled, &.disabled:hover {
+        color: rgba(255,255,255, 0.3);
+        cursor: not-allowed;
+      }
+    }
+  }
+  .player-status {
+    flex: 1;
+    padding: 0 1rem 0 0;
+    .bar {
+      height: 8px;
+      width: 100%;
+      background: #404040;
+      @include border-radius(8px);
+      margin-top: 10px;
+      overflow: hidden;
+      .progress {
+        background: $reactorPrimary;
+        height: 8px;
+      }
+    }
+  }
+}
+
+// Edit Story
+#replay-edit {
+  bottom: $reactorReplayHeight;
+}
