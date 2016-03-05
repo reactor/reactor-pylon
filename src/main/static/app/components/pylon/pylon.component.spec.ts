@@ -24,7 +24,7 @@ export function main() {
       RouteRegistry,
       DirectiveResolver,
       provide(Location, {useClass: SpyLocation}),
-      provide(ROUTER_PRIMARY_COMPONENT, {useValue: AppComponent}),
+      provide(ROUTER_PRIMARY_COMPONENT, {useValue: PylonComponent}),
       provide(Router, {useClass: RootRouter})
     ]);
 
@@ -43,6 +43,6 @@ export function main() {
 @Component({
   selector: 'test-cmp',
   template: '<sd-app></sd-app>',
-  directives: [AppComponent]
+  directives: [PylonComponent]
 })
 class TestComponent {}
