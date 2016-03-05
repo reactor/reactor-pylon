@@ -15,4 +15,4 @@ describe('App', function () {
         expect(element(by.css('sd-app sd-navbar nav a:last-child')).getText()).toEqual('ABOUT');
     });
 });
-//# sourceMappingURL=app.component.e2e.js.map
+//# sourceMappingURL=pylon.component.e2e.js.map

@@ -13,11 +13,11 @@ import {SpyLocation} from 'angular2/src/mock/location_mock';
 import {RootRouter} from 'angular2/src/router/router';
 
 import {DOM} from 'angular2/src/platform/dom/dom_adapter';
-import {AppComponent} from './app.component';
+import {PylonComponent} from './pylon.component';
 
 export function main() {
 
-  describe('App component', () => {
+  describe('Pylon component', () => {
 
     // Support for testing component that uses Router
     beforeEachProviders(() => [

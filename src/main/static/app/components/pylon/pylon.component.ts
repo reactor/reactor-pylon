@@ -15,8 +15,8 @@ import {NameListService} from '../../../shared/services/name-list.service';
   selector: 'reactor-app',
   viewProviders: [NameListService],
   moduleId: module.id,
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  templateUrl: './pylon.component.html',
+  styleUrls: ['./pylon.component.css'],
   encapsulation: ViewEncapsulation.None,
   directives: [ROUTER_DIRECTIVES, SidebarComponent]
 })
@@ -31,7 +31,7 @@ import {NameListService} from '../../../shared/services/name-list.service';
   { path: '/connection',   component: ConnexionComponent,  as: 'Connexion' }
 ])
 
-export class AppComponent {
+export class PylonComponent {
   loaded: Boolean = false;
   disabledSidebar: Boolean = true;
 
