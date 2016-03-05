@@ -7,7 +7,7 @@ import {
 } from 'angular2/testing';
 import {Component} from 'angular2/core';
 import {DOM} from 'angular2/src/platform/dom/dom_adapter';
-import {ConnexionComponent} from './connexion.component';
+import {ConnexionComponent} from './connection.component';
 
 export function main() {
   describe('Connexion component', () => {
@@ -15,9 +15,9 @@ export function main() {
       injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         return tcb.createAsync(TestComponent)
           .then((rootTC) => {
-            let connexionDOMEl = rootTC.debugElement.children[0].nativeElement;
+            let connectionDOMEl = rootTC.debugElement.children[0].nativeElement;
 
-            expect(DOM.querySelectorAll(connexionDOMEl, 'h2')[0].textContent).toEqual('Features');
+            expect(DOM.querySelectorAll(connectionDOMEl, 'h2')[0].textContent).toEqual('Features');
           });
       }));
   });
@@ -26,6 +26,6 @@ export function main() {
 @Component({
   selector: 'test-cmp',
   directives: [ConnexionComponent],
-  template: '<reactor-connexion></reactor-connexion>'
+  template: '<reactor-connection></reactor-connection>'
 })
 class TestComponent {}

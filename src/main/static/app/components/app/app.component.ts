@@ -7,7 +7,7 @@ import {BufferComponent} from '../../../buffer/components/buffer.component';
 import {HostComponent} from '../../../host/components/host.component';
 import {SystemComponent} from '../../../system/components/system.component';
 import {MetricComponent} from '../../../metric/components/metric.component';
-import {ConnexionComponent} from '../../../connexion/components/connexion.component';
+import {ConnexionComponent} from '../../../connection/components/connection.component';
 import {LogComponent} from '../../../log/components/log.component';
 import {NameListService} from '../../../shared/services/name-list.service';
 
@@ -28,7 +28,7 @@ import {NameListService} from '../../../shared/services/name-list.service';
   { path: '/buffer',      component: BufferComponent,     as: 'Buffer' },
   { path: '/system',      component: SystemComponent,     as: 'System' },
   { path: '/log',         component: LogComponent,        as: 'Log' },
-  { path: '/connexion',   component: ConnexionComponent,  as: 'Connexion' }
+  { path: '/connection',   component: ConnexionComponent,  as: 'Connexion' }
 ])
 
 export class AppComponent {
@@ -37,7 +37,7 @@ export class AppComponent {
 
   constructor(public router: Router) {
     router.subscribe(path => {
-        this.disabledSidebar = (path === 'connexion');
+        this.disabledSidebar = (path === 'connection');
         this.loaded = true;
     });
   }
