@@ -2,11 +2,13 @@ import {provide, enableProdMode} from 'angular2/core';
 import {bootstrap} from 'angular2/platform/browser';
 import {ROUTER_PROVIDERS, APP_BASE_HREF} from 'angular2/router';
 import {PylonComponent} from './app/components/pylon/pylon.component';
+import {SocketService} from './shared/services/socket.service';
 
 if ('<%= ENV %>' === 'prod') { enableProdMode(); }
 
 bootstrap(PylonComponent, [
   ROUTER_PROVIDERS,
+  SocketService,
   provide(APP_BASE_HREF, { useValue: '<%= APP_BASE %>' })
 ]);
 

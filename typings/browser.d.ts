@@ -14,6 +14,7 @@
 /// <reference path="browser/ambient/gulp-util/gulp-util.d.ts" />
 /// <reference path="browser/ambient/gulp/gulp.d.ts" />
 /// <reference path="browser/ambient/jasmine/jasmine.d.ts" />
+/// <reference path="browser/ambient/js-cookie/js-cookie.d.ts" />
 /// <reference path="browser/ambient/micromatch/micromatch.d.ts" />
 /// <reference path="browser/ambient/mime/mime.d.ts" />
 /// <reference path="browser/ambient/minimatch/minimatch.d.ts" />

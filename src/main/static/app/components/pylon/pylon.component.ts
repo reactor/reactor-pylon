@@ -7,9 +7,11 @@ import {BufferComponent} from '../../../buffer/components/buffer.component';
 import {HostComponent} from '../../../host/components/host.component';
 import {SystemComponent} from '../../../system/components/system.component';
 import {MetricComponent} from '../../../metric/components/metric.component';
-import {ConnexionComponent} from '../../../connection/components/connection.component';
+import {ConnectionComponent} from '../../../connection/components/connection.component';
 import {LogComponent} from '../../../log/components/log.component';
 import {NameListService} from '../../../shared/services/name-list.service';
+import {SocketService} from '../../../shared/services/socket.service';
+import {Subject} from 'rxjs/Rx';
 
 @Component({
   selector: 'reactor-app',
@@ -28,17 +30,23 @@ import {NameListService} from '../../../shared/services/name-list.service';
   { path: '/buffer',      component: BufferComponent,     as: 'Buffer' },
   { path: '/system',      component: SystemComponent,     as: 'System' },
   { path: '/log',         component: LogComponent,        as: 'Log' },
-  { path: '/connection',   component: ConnexionComponent,  as: 'Connexion' }
+  { path: '/connection',   component: ConnectionComponent,  as: 'Connection' }
 ])
 
 export class PylonComponent {
   loaded: Boolean = false;
   disabledSidebar: Boolean = true;
 
-  constructor(public router: Router) {
+  constructor(public router: Router, public socketService : SocketService) {
+    var test = Subject.create();
     router.subscribe(path => {
-        this.disabledSidebar = (path === 'connection');
-        this.loaded = true;
+        socketService.ws('ws://localhost:12012/nexus/stream', test).then(success => {
+          this.disabledSidebar = (path === 'connection');
+          this.loaded = true;
+        }, error => {
+          this.disabledSidebar = (path === 'connection');
+          router.navigate(['Connection']);
+        });
     });
   }
 }

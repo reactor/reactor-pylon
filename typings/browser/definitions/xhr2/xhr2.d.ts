@@ -4,7 +4,7 @@ declare module 'xhr2/lib/xhr2' {
 var Element: {
   prototype: Element;
   new(): Element;
-};
+}
 
 interface Event {
   bubbles: boolean;
@@ -34,7 +34,7 @@ var Event: {
   AT_TARGET: number;
   BUBBLING_PHASE: number;
   CAPTURING_PHASE: number;
-};
+}
 
 interface EventInit {
   bubbles?: boolean;
@@ -67,13 +67,13 @@ interface ErrorEvent extends Event {
 var ErrorEvent: {
     prototype: ErrorEvent;
     new(): ErrorEvent;
-};
+}
 
 
 var ProgressEvent: {
   prototype: ProgressEvent;
   new(type: string, eventInitDict?: ProgressEventInit): ProgressEvent;
-};
+}
 
 type EventListenerOrEventListenerObject = EventListener | EventListenerObject;
 
@@ -152,7 +152,7 @@ var XMLHttpRequest: {
   UNSENT: number;
   create(): XMLHttpRequest;
   nodejsSet(url: any): any;
-};
+}
 
 interface XMLHttpRequestUpload extends EventTarget, XMLHttpRequestEventTarget {
     addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
@@ -161,7 +161,7 @@ interface XMLHttpRequestUpload extends EventTarget, XMLHttpRequestEventTarget {
 var XMLHttpRequestUpload: {
   prototype: XMLHttpRequestUpload;
   new(): XMLHttpRequestUpload;
-};
+}
 
 export = XMLHttpRequest;
 }

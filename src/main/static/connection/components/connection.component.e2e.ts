@@ -1,4 +1,4 @@
-describe('Connexion', function() {
+describe('Connection', function() {
 
   /*beforeEach(function() {
     browser.get('about');

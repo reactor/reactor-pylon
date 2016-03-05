@@ -31,7 +31,7 @@ export const ASSETS_SRC           = `${APP_SRC}/assets`;
 
 export const TOOLS_DIR            = 'tools';
 export const DOCS_DEST            = 'docs';
-export const DIST_DIR             = `src/main/resources/public`;
+export const DIST_DIR             = ENV === 'dev' ? 'build/resources/dev' : `src/main/resources/public`;
 export const TMP_DIR              = `build/resources/tmp`;
 export const GRADLE_DIR           = `build/classes/main/public`;
 export const APP_DEST             = ENV === 'dev' ? 'build/resources/dev' : DIST_DIR;
@@ -70,6 +70,7 @@ export const DEV_NPM_DEPENDENCIES: IDependency[] = normalizeDependencies([
   { src: 'es6-shim/es6-shim.js', inject: 'shims' },
   { src: 'systemjs/dist/system.src.js', inject: 'shims' },
   { src: 'angular2/bundles/angular2-polyfills.js', inject: 'shims' },
+  { src: 'js-cookie/src/js.cookie.js', inject: 'libs' },
   { src: 'rxjs/bundles/Rx.js', inject: 'libs' },
   { src: 'angular2/bundles/angular2.js', inject: 'libs' },
   { src: 'angular2/bundles/router.js', inject: 'libs' },
@@ -80,6 +81,8 @@ export const PROD_NPM_DEPENDENCIES: IDependency[] = normalizeDependencies([
   { src: 'systemjs/dist/system-polyfills.src.js', inject: 'shims' },
   { src: 'reflect-metadata/Reflect.js', inject: 'shims' },
   { src: 'es6-shim/es6-shim.min.js', inject: 'shims' },
+  { src: 'rxjs/bundles/Rx.js', inject: 'libs' },
+  { src: 'js-cookie/src/js.cookie.js', inject: 'libs' },
   { src: 'systemjs/dist/system.js', inject: 'shims' },
   { src: 'angular2/bundles/angular2-polyfills.min.js', inject: 'libs' }
 ]);

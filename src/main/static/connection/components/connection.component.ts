@@ -8,5 +8,5 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
   styleUrls: ['./connection.component.css'],
   directives: [FORM_DIRECTIVES, CORE_DIRECTIVES]
 })
-export class ConnexionComponent {
+export class ConnectionComponent {
 }

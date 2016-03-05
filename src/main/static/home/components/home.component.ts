@@ -1,6 +1,5 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/common';
-//import Rx           from 'rxjs';
 import {NameListService} from '../../shared/services/name-list.service';
 
 @Component({
