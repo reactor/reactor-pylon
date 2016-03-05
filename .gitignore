@@ -6,6 +6,7 @@ bin
 build
 .classpath
 .eclipse
+typings
 .gradle
 .project
 .settings
