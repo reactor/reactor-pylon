@@ -17,7 +17,7 @@ export const ENV                  = getEnvironment();
 export const DEBUG                = argv['debug']       || false;
 export const DOCS_PORT            = argv['docs-port'] || 4003;
 export const COVERAGE_PORT        = argv['coverage-port'] || 4004;
-export const APP_BASE             = argv['base']        || '/pylon';
+export const APP_BASE             = ENV === 'dev' ? (argv['base']        || '/') : '/pylon';
 
 export const ENABLE_HOT_LOADING   = !!argv['hot-loader'];
 export const HOT_LOADER_PORT      = 5578;

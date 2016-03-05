@@ -24,7 +24,7 @@ function cleanAll(done) {
 }
 
 function cleanDev(done) {
-  del(DEV_DEST).then((paths) => {
+  del(DEV_DEST, GRADLE_DIR).then((paths) => {
     util.log('Deleted', chalk.yellow(paths && paths.join(', ') || '-'));
     done();
   });
