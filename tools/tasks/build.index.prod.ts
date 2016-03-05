@@ -26,7 +26,7 @@ export = function buildIndexProd(gulp, plugins) {
       }), {
         transform: function (filepath) {
           let path = normalize(filepath).split(sep);
-          arguments[0] = path.slice(4, path.length).join(sep) + `?${Date.now()}`;
+          arguments[0] = path.slice(5, path.length).join(sep) + `?${Date.now()}`;
           return plugins.inject.transform.apply(plugins.inject.transform, arguments);
         }
       });

@@ -21,6 +21,7 @@ gulp.task('build.dev', done =>
               'build.js.dev',
               'build.index.dev',
               'fontawesone.font',
+              'sync.build.dir',
               done));
 
 // --------------
@@ -55,6 +56,7 @@ gulp.task('build.prod', done =>
               'build.bundles',
               'build.bundles.app',
               'build.index.prod',
+              'sync.build.dir',
               done));
 
 // --------------

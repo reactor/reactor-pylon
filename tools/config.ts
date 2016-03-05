@@ -17,7 +17,7 @@ export const ENV                  = getEnvironment();
 export const DEBUG                = argv['debug']       || false;
 export const DOCS_PORT            = argv['docs-port'] || 4003;
 export const COVERAGE_PORT        = argv['coverage-port'] || 4004;
-export const APP_BASE             = argv['base']        || '/';
+export const APP_BASE             = argv['base']        || '/pylon';
 
 export const ENABLE_HOT_LOADING   = !!argv['hot-loader'];
 export const HOT_LOADER_PORT      = 5578;
@@ -31,11 +31,12 @@ export const ASSETS_SRC           = `${APP_SRC}/assets`;
 
 export const TOOLS_DIR            = 'tools';
 export const DOCS_DEST            = 'docs';
-export const DIST_DIR             = `build/resources`;
-export const TMP_DIR              = `${DIST_DIR}/tmp`;
-export const APP_DEST             = `${DIST_DIR}/${ENV}`;
-export const DEV_DEST             = `${DIST_DIR}/dev`;
-export const PROD_DEST            = `${DIST_DIR}/prod`;
+export const DIST_DIR             = `src/main/resources/public`;
+export const TMP_DIR              = `build/resources/tmp`;
+export const GRADLE_DIR           = `build/classes/main/public`;
+export const APP_DEST             = ENV === 'dev' ? 'build/resources/dev' : DIST_DIR;
+export const DEV_DEST             = `build/resources/dev`;
+export const PROD_DEST            = DIST_DIR;
 export const CSS_DEST             = `${APP_DEST}/assets/css`;
 export const JS_DEST              = `${APP_DEST}/assets/js`;
 

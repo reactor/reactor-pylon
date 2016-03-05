@@ -1,5 +1,5 @@
 import * as util from 'gulp-util';
-import {APP_SRC, APP_DEST} from '../config';
+import {APP_SRC, TMP_DIR} from '../config';
 
 export = function processScss(gulp, plugins) {
 
@@ -16,6 +16,6 @@ export = function processScss(gulp, plugins) {
               util.log(err);
             }))
             //.pipe(plugins.sass(sassOptions).on('error', plugins.sass.logError))
-            .pipe(gulp.dest(`${APP_DEST}`));
+            .pipe(gulp.dest(`${TMP_DIR}`));
     };
 }
