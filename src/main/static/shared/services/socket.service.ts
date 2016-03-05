@@ -1,5 +1,5 @@
 import {Observable, Subject}           from 'rxjs/Rx';
-import {Cookies} from 'js-cookie';
+import {CookiesStatic} from 'js-cookie';
 import {Injectable} from 'angular2/core';
 
 @Injectable() export class SocketService {
@@ -13,6 +13,22 @@ import {Injectable} from 'angular2/core';
     retry = 3;
 
     socket:WebSocket;
+
+    static bytesToSize(bytes) {
+        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        if (bytes === 0) {
+            return [0, 'Bytes'];
+        }
+        var i = Math.floor(Math.log(bytes) / Math.log(1024));
+        return [Math.round(bytes / Math.pow(1024, i)), sizes[i]];
+    }
+
+    static formatUrl(uri) {
+        if (uri.indexOf('://') === -1) {
+            return 'ws://' + uri;
+        }
+        return uri;
+    }
 
     defaultOrLastTarget() {
         var target = Cookies.get('targetAPI');
@@ -31,27 +47,12 @@ import {Injectable} from 'angular2/core';
         }
     }
 
-    formatUrl(uri) {
-        if (uri.indexOf('://') === -1) {
-            return 'ws://' + uri;
-        }
-        return uri;
-    }
 
     updateTargetAPI(target) {
         if (typeof target !== 'undefined') {
             this.target = target;
             Cookies.set('targetAPI', this.target);
         }
-    }
-
-    bytesToSize(bytes) {
-        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-        if (bytes === 0) {
-            return [0, 'Bytes'];
-        }
-        var i = Math.floor(Math.log(bytes) / Math.log(1024));
-        return [Math.round(bytes / Math.pow(1024, i)), sizes[i]];
     }
 
     ws(path:string, stateObserver:Subject<number>) {

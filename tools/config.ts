@@ -81,8 +81,6 @@ export const PROD_NPM_DEPENDENCIES: IDependency[] = normalizeDependencies([
   { src: 'systemjs/dist/system-polyfills.src.js', inject: 'shims' },
   { src: 'reflect-metadata/Reflect.js', inject: 'shims' },
   { src: 'es6-shim/es6-shim.min.js', inject: 'shims' },
-  { src: 'rxjs/bundles/Rx.js', inject: 'libs' },
-  { src: 'js-cookie/src/js.cookie.js', inject: 'libs' },
   { src: 'systemjs/dist/system.js', inject: 'shims' },
   { src: 'angular2/bundles/angular2-polyfills.min.js', inject: 'libs' }
 ]);
