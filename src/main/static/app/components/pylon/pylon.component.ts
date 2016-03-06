@@ -11,7 +11,7 @@ import {ConnectionComponent} from '../../../connection/components/connection.com
 import {LogComponent} from '../../../log/components/log.component';
 import {NameListService} from '../../../shared/services/name-list.service';
 import {SocketService} from '../../../shared/services/socket.service';
-import {Subject} from 'rxjs/Rx';
+import {BehaviorSubject} from 'rxjs/Rx';
 
 @Component({
   selector: 'reactor-app',
@@ -38,15 +38,30 @@ export class PylonComponent {
   disabledSidebar: Boolean = true;
 
   constructor(public router: Router, public socketService : SocketService) {
-    var test = Subject.create();
+    var socketState = BehaviorSubject.create();
+
+    socketState.subscribe( state => {
+      console.log(state);
+    });
+
     router.subscribe(path => {
-        socketService.ws('ws://localhost:12012/nexus/stream', test).then(success => {
-          this.disabledSidebar = (path === 'connection');
-          this.loaded = true;
-        }, error => {
-          this.disabledSidebar = (path === 'connection');
-          router.navigate(['Connection']);
-        });
+      if(path === 'connection') {
+        this.disabledSidebar = true;
+        this.loaded = true;
+      }
+    });
+
+    socketService.ws('ws://localhost:12012/nexus/stream', socketState).then(socket => {
+      this.loaded = true;
+      socket.receiver.subscribe(data => {
+        console.log(data);
+      }, error => {
+        console.log(error);
+      });
+    }, error => {
+      console.log(error);
+      this.disabledSidebar = true;
+      router.navigate(['Connection']);
     });
   }
 }

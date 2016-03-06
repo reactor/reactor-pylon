@@ -55,7 +55,7 @@ import {Injectable} from 'angular2/core';
         }
     }
 
-    ws(path:string, stateObserver:Subject<number>) {
+    ws(path:string, stateObserver : Subject<number>) : Promise<Socket> {
         this.updateTargetAPI(path);
         // Handle the data
         return new Promise((resolve, reject) => {
@@ -87,12 +87,18 @@ import {Injectable} from 'angular2/core';
                         }
 
                         ws.onmessage = (msg) => {
-                            var data = JSON.parse(msg.data);
-                            if (data.cause) {
-                                obs.error(data);
+                            console.log(msg.data);
+                            try {
+                                var data = JSON.parse(`'${msg.data}'`);
+                                if (data.cause) {
+                                    obs.error(data);
+                                }
+                                else {
+                                    obs.next(data);
+                                }
                             }
-                            else {
-                                obs.next(data);
+                            catch(e) {
+                                obs.error(e);
                             }
                         };
                         ws.onerror = (e) => {
@@ -146,4 +152,9 @@ import {Injectable} from 'angular2/core';
             ws.onerror = reject;
         });
     }
+}
+
+interface Socket {
+    receiver : Observable<any>;
+    sender : Subject<any>;
 }
