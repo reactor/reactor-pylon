@@ -1,6 +1,5 @@
-
 .modal-overlay {
-  position: absolute;
+  position: fixed;
   top: 5px;
   right: 0;
   left: 0;
@@ -30,6 +29,9 @@
   .form {
     .control {
       padding-top: 1.6rem;
+    }
+    .btn {
+      margin-right: 1rem;
     }
   }
 }

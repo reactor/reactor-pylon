@@ -12,6 +12,31 @@
       border: 5px solid $reactorBorder;
       padding: 1rem;
       margin-left: 20px;
+      .donut-chart {
+        position: relative;
+        height: 155px;
+        .label {
+          position: absolute;
+          bottom: 0px;
+          left: 20px;
+          right: 10px;
+          text-align: center;
+          font-size: 11px;
+          color: #888;
+        }
+        .percent {
+          position: absolute;
+          top: 42%;
+          left: 30%;
+          right: 30%;
+          padding-left: 10px;
+          letter-spacing: -1px;
+          font-weight: bold;
+          font-size: 20px;
+          color: #DDD;
+          text-align: center;
+        }
+      }
       .host-label {
         text-align: center;
       }
@@ -35,10 +60,5 @@
         }
       }
     }
-  }
-}
-
-#testtt {
-  svg {
   }
 }

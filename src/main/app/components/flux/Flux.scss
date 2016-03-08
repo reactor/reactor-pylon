@@ -1,0 +1,57 @@
+@import "../../styles/plugins";
+
+$flux-width: 400px;
+
+.flux {
+  position: absolute;
+  top:70px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border: 4px solid $reactorBorder;
+  margin: 1.8rem 2.2rem;
+  .flux-map {
+    margin-right: $flux-width;
+  }
+  .flux-details {
+    position: absolute;
+    background: $reactorBackgroundLight;
+    border-left: 2px solid $reactorBorder;
+    width: $flux-width;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    .title {
+      line-height: 40px;
+      padding-left: 1rem;
+      font-weight: bold;
+      font-size: 12px;
+      border-bottom: 1px solid #dadada;
+      color: $reactorPrimary;
+      .close-sm {
+        position: absolute;
+        right: 8px;
+        top: 8px;
+      }
+    }
+    .chart {
+      background: white;
+      padding: 15px 20px 15px 10px;
+      border-bottom: 1px solid #dadada;
+      .chart-title {
+        text-align: center;
+        font-size: 12px;
+        padding-bottom: 10px;
+        font-weight: bold;
+      }
+      .chart-legend {
+        text-align: center;
+        font-size: 11px;
+        padding-top: 5px;
+        .color1 { color: #60b124};
+        .color2 { color: #40a7ff};
+        .color3 { color: #ff5240};
+      }
+    }
+  }
+}

@@ -87,7 +87,7 @@ strong {
         border-left: 4px solid transparent;
         padding-left: 15px;
         cursor: pointer;
-        @include transition(all .2s ease-in-out);
+        @include transition(all .1s ease-in-out);
         &:hover {
           background-color: white;
           text-decoration: none;

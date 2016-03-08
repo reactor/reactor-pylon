@@ -16,3 +16,18 @@ $close-color: #000;
     @include opacity(0.9);
   }
 }
+.close-sm {
+  width: 25px;
+  height: 25px;
+  background: linear-gradient(to bottom, transparent 48%, $close-color 48%, $close-color 52%,  transparent 52%),
+  linear-gradient(to right, transparent 48%, $close-color 48%, $close-color 52%, transparent 52%);
+  transform:rotate(-45deg);
+  @include opacity(0.5);
+  cursor: pointer;
+  &.right {
+    float: right;
+  }
+  &:hover {
+    @include opacity(0.9);
+  }
+}

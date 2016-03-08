@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 import React from 'react';
+import Details from './details/Details';
+
+require('./Flux.scss');
 
 class Flux extends React.Component {
 
@@ -22,6 +25,12 @@ class Flux extends React.Component {
       <div>
         <div className="heading">
           <strong>Flux</strong>
+        </div>
+        <div className="flux">
+          <div className="flux-map">ICI</div>
+          <div className="flux-details">
+            <Details></Details>
+          </div>
         </div>
       </div>
     );
