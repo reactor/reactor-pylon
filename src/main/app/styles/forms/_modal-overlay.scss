@@ -1,0 +1,35 @@
+
+.modal-overlay {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  left: 0;
+  background: white;
+  bottom: 0;
+  display: none;
+  z-index: 1000;
+  //@include opacity(0);
+  //@include transition(opacity .2s ease-in-out);
+  &.show {
+    display: block;
+    //@include opacity(1);
+  }
+  h1 {
+    font-size: 40px;
+    line-height: 50px;
+    font-weight: lighter;
+    padding-bottom: 0rem;
+    padding-top: 2rem;
+  }
+  p {
+    padding: 1rem 0;
+    font-weight: lighter;
+    font-size: 13px;
+    line-height: 25px;
+  }
+  .form {
+    .control {
+      padding-top: 1.6rem;
+    }
+  }
+}

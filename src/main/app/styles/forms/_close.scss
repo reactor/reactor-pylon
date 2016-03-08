@@ -1,0 +1,18 @@
+
+$close-color: #000;
+
+.close {
+  width: 35px;
+  height: 35px;
+  background: linear-gradient(to bottom, transparent 48.5%, $close-color 48.5%, $close-color 51.5%,  transparent 51.5%),
+  linear-gradient(to right, transparent 48.5%, $close-color 48.5%, $close-color 51.5%, transparent 51.5%);
+  transform:rotate(-45deg);
+  @include opacity(0.5);
+  cursor: pointer;
+  &.right {
+    float: right;
+  }
+  &:hover {
+    @include opacity(0.9);
+  }
+}

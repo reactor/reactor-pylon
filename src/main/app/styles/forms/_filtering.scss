@@ -1,0 +1,21 @@
+$filtering-background: $reactorBackgroundLight;
+$filtering-padding-x: 0.45rem;
+$filtering-padding-y: 0.45rem;
+
+.filtering {
+  background: $filtering-background;
+  border-bottom: 2px solid rgba(0,0,0,.05);
+  padding: $filtering-padding-y $filtering-padding-x;
+  @include clearfix();
+
+  .input {
+    float: left;
+    width: auto;
+    margin-right: 0.5rem;
+  }
+  .btn {
+  }
+  &.filtering-bottom-space {
+    margin-bottom: 1rem;
+  }
+}

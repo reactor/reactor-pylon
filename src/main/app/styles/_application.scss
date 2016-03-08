@@ -1,0 +1,171 @@
+
+a {
+  color: $reactorPrimary;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+html, body, #app {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: white;
+}
+
+body {
+  font-family: Helvetica, Arial;
+  line-height: 1.5em;
+  font-size: 13px;
+  color: $reactorTextColor;
+  margin: 0;
+  padding: 0;
+}
+
+strong {
+  font-weight: bold;
+}
+
+// Status bar
+#status {
+  height: 4px;
+  background: $reactorPrimary;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+// Disposition application (Flexbox)
+
+#application {
+  height: 100%;
+  display: flex;
+  #application-left {
+    width: 200px;
+    border-right: 6px solid #e8e8e8;
+    background: white;
+    background: $reactorBackgroundLight;
+  }
+  #application-right {
+    width: 350px;
+    border-left: 6px solid #e8e8e8;
+    display: none;
+    background: white;
+  }
+  #application-main {
+    flex: 1;
+    overflow-y: scroll;
+  }
+  #application-left, #application-right, #application-main {
+    position: relative;
+    padding-top: 5px;
+    @include transition(margin-bottom .2s ease-in-out);
+  }
+  &.replay {
+    #application-left, #application-right, #application-main {
+      margin-bottom: $reactorReplayHeight;
+    }
+  }
+}
+
+// Sidebar left
+.sidebar-left {
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      list-style: none;
+      a {
+        display: block;
+        border-bottom: 1px solid #e8e8e8;
+        background: #f8f8f8;
+        line-height: 40px;
+        color: $reactorTextColor;
+        border-left: 4px solid transparent;
+        padding-left: 15px;
+        cursor: pointer;
+        @include transition(all .2s ease-in-out);
+        &:hover {
+          background-color: white;
+          text-decoration: none;
+        }
+      }
+      a.active {
+        background-color: white;
+        margin-right: -6px;
+        border-left: 4px solid $reactorPrimary;
+        font-weight: bold;
+      }
+      &:first-child {
+        a, a.active {
+          border-top: 1px solid #e8e8e8;
+        }
+      }
+    }
+  }
+}
+
+// Mode
+.sidebar-mode {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  border-top: 1px solid #e8e8e8;
+  right: 0;
+  padding: 10px 0;
+}
+
+// Logo Spring Console
+#logo {
+  padding: 20px 0;
+  background: white;
+  a, a span {
+    display: block;
+    width: 56px;
+    height: 34px;
+    background: url(../images/logo.png) 0 0 no-repeat;
+    background-size: 56px 68px;
+    text-indent: -6000em;
+    margin: 0 auto;
+  }
+  a {
+    span {
+      @include transition-property(opacity);
+      @include transition-duration(0.3s);
+      @include opacity(0);
+      background-position: 0 -34px;
+    }
+    &:hover {
+      span {
+        @include opacity(1);
+      }
+    }
+  }
+}
+
+// Main Content
+.main-content {
+  padding: 1.8rem 2.2rem;
+}
+
+// Content box
+.content-box {
+  padding-bottom: 3rem;
+}
+
+// Heading
+.heading {
+  font-size: 1.8em;
+  line-height: 1.3em;
+  padding-bottom: 1rem;
+  font-weight: lighter;
+  border-bottom: 1px solid #d6d6d6;
+  margin-bottom: 0.8rem;
+  strong {
+    font-weight: normal;
+  }
+}

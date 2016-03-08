@@ -14,28 +14,18 @@
  * limitations under the License.
  */
 import React from 'react';
-import Item from "./host/host";
-require('./Host.scss');
 
-class Host extends React.Component {
+class Buffer extends React.Component {
+
   render() {
     return (
       <div>
         <div className="heading">
-          <strong>Hosts</strong>
-        </div>
-        <div className="filtering filtering-bottom-space">
-          <input className="input" type="text" placeholder="Find a stream" />
-          <button type="submit" className="btn btn-primary">Search</button>
-        </div>
-        <div className="host-list">
-          <div className="column">
-            <Item />
-          </div>
+          <strong>Buffer</strong>
         </div>
       </div>
     );
   }
 }
 
-export default Host;
+export default Buffer;

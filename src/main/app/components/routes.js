@@ -22,16 +22,28 @@ import {
   browserHistory
 } from 'react-router';
 
-import App from './core/App';
+import App from './core/app/App';
 import Dashboard from './dashboard/Dashboard';
+import Connection from './connection/Connection';
+import Metric from './metric/Metric';
+import Flux from './flux/Flux';
 import Host from './host/Host';
+import Buffer from './buffer/Buffer';
+import System from './system/System';
+import Log from './log/Log';
 import NotFound from './core/NotFound';
 
 export default (
   <Router history={browserHistory}>
     <Route component={App} path="pylon">
-      <IndexRoute component={Dashboard} />
+      <IndexRoute component={Connection} />
+      <Route component={Dashboard} path="dashboard"/>
+      <Route component={Metric} path="metric"/>
+      <Route component={Flux} path="flux"/>
       <Route component={Host} path="host"/>
+      <Route component={Buffer} path="buffer"/>
+      <Route component={System} path="system"/>
+      <Route component={Log} path="log"/>
       <Route component={NotFound} path="*" />
     </Route>
   </Router>

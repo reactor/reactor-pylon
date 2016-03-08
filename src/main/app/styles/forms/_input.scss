@@ -1,0 +1,46 @@
+$input-padding-y: 0.8rem;
+$input-padding-x: 0.8rem;
+$font-size-base: 14px;
+$line-height: 15px;
+$input-color: #222;
+$input-bg: #FFF;
+$input-btn-border-width: 1px;
+$input-border-color: #e5e5e5;
+$input-border-bottom-color: #d2d2d2;
+$input-border-radius: 0.25rem;
+$input-color-placeholder: #888;
+$input-bg-disabled: #f4f4f4;
+
+.input {
+  display: block;
+  box-sizing: border-box;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing: border-box;
+  width: 100%;
+  padding: $input-padding-y $input-padding-x;
+  font-size: $font-size-base;
+  line-height: $line-height;
+  color: $input-color;
+  background-color: $input-bg;
+  background-image: none;
+  border: $input-btn-border-width solid $input-border-color;
+  border-bottom: $input-btn-border-width solid $input-border-bottom-color;
+  @include border-radius($input-border-radius);
+  @include transition(border-color ease-in-out .15s);
+  @include form-control-focus();
+  &::-ms-expand {
+    background-color: transparent;
+    border: 0;
+  }
+  &::placeholder {
+    color: $input-color-placeholder;
+    opacity: 1;
+  }
+  &:disabled, &[readonly] {
+    background-color: $input-bg-disabled;
+    opacity: 1;
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+}

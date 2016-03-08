@@ -1,0 +1,61 @@
+$dropdown-padding-y: 0.7rem;
+$dropdown-padding-x: 1.2rem;
+$font-size-base: 14px;
+$line-height: 15px;
+
+// Primary
+$dropdown-color: #222;
+$dropdown-bg: #FFF;
+$dropdownbtn-border-width: 1px;
+$dropdownborder-color: #e5e5e5;
+$dropdownborder-bottom-color: #d2d2d2;
+$dropdown-bg-disabled: #f4f4f4;
+
+$dropdownborder-radius: 0.25rem;
+
+@mixin dropdown($background, $border, $borderBottom, $color, $backgroundDisabled) {
+  $hover-background: darken($background, 8%);
+  $hover-border: darken($border, 10%);
+  $hover-border-bottom: darken($borderBottom, 10%);
+
+  color: $color;
+  background-color: $background;
+  border: $dropdownbtn-border-width solid $border;
+  border-bottom: $dropdownbtn-border-width solid $borderBottom;
+  &:disabled, &[readonly] {
+    background-color: $backgroundDisabled;
+    opacity: 1;
+  }
+  &:hover {
+    background-color: $hover-background;
+    border-color: $hover-border;
+    border-bottom-color: $hover-border-bottom;
+  }
+}
+
+.dropdown, a.dropdown {
+  display: inline;
+  padding: $dropdown-padding-y $dropdown-padding-x;
+  font-size: $font-size-base;
+  line-height: $line-height;
+  position: relative;
+  background-image: none;
+  padding-right: 3rem;
+  @include border-radius($dropdownborder-radius);
+  @include transition(background ease-in-out .15s, border-color ease-in-out .15s);
+  cursor: pointer;
+  &:disabled {
+    cursor: not-allowed;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+  .caret {
+    top: 10px;
+    right: 12px;
+  }
+}
+
+.dropdown-primary {
+  @include dropdown($dropdown-bg, $dropdownborder-color, $dropdownborder-bottom-color, $dropdown-color, $dropdown-bg-disabled);
+}

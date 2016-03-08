@@ -1,0 +1,44 @@
+@import "../../styles/plugins";
+
+.host-list {
+  margin-left: -20px;
+  margin-bottom: 20px;
+  @include clearfix();
+  .column {
+    width: 50%;
+    float: left;
+    .host {
+      display: block;
+      border: 5px solid $reactorBorder;
+      padding: 1rem;
+      margin-left: 20px;
+      .host-label {
+        text-align: center;
+      }
+      .host-general {
+        padding-top: 1.4rem;
+        padding-bottom: .4rem;
+        .host-infos {
+          position: relative;
+          ul {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            font-size: 12px;
+            padding-left: 120px;
+            border-left: 2px solid $reactorBorder;
+          }
+          img {
+            position: absolute;
+            left: 40px;
+            top: 3.8rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+#testtt {
+  svg {
+  }
+}
