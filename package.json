@@ -6,6 +6,7 @@
   "scripts": {
     "clean": "rimraf src/main/resources/public/*",
     "copy": "copyfiles -f ./src/main/app/index.html ./src/main/app/favicon.ico ./src/main/resources/public",
+    "copy:build": "copyfiles -f ./src/main/app/index.html ./src/main/app/favicon.ico ./build/classes/public/public",
     "dist": "npm run copy & webpack --env=dist",
     "lint": "eslint ./src/main/app",
     "posttest": "npm run lint",

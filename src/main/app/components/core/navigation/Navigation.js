@@ -9,10 +9,9 @@ class Navigation extends React.Component {
         <li><Link activeClassName="active" to="/pylon/dashboard">Dashboard</Link></li>
         <li><Link activeClassName="active" to="/pylon/metric">Metrics</Link></li>
         <li><Link activeClassName="active" to="/pylon/flux">Flux</Link></li>
-        <li><Link activeClassName="active" to="/pylon/host">Host</Link></li>
         <li><Link activeClassName="active" to="/pylon/buffer">Buffers</Link></li>
         <li><Link activeClassName="active" to="/pylon/system">System</Link></li>
-        <li><Link activeClassName="active" to="/pylon/log">Tail Logs</Link></li>
+        <li><Link activeClassName="active" to="/pylon/log">Logs</Link></li>
       </ul>
     );
   }

@@ -14,18 +14,28 @@
  * limitations under the License.
  */
 import React from 'react';
+import Item from "./host/host";
+require('./System.scss');
 
-class System extends React.Component {
-
+class Host extends React.Component {
   render() {
     return (
       <div>
         <div className="heading">
           <strong>System</strong>
         </div>
+        <div className="filtering filtering-bottom-space">
+          <input className="input" type="text" placeholder="Find a stream" />
+          <button type="submit" className="btn btn-primary">Search</button>
+        </div>
+        <div className="host-list">
+          <div className="column">
+            <Item />
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-export default System;
+export default Host;
