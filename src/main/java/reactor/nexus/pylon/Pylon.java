@@ -37,20 +37,20 @@ import reactor.core.publisher.Mono;
 import reactor.core.timer.Timer;
 import reactor.core.util.Logger;
 import reactor.io.buffer.Buffer;
-import reactor.io.net.ReactiveChannel;
-import reactor.io.net.ReactiveChannelHandler;
-import reactor.io.net.ReactiveNet;
-import reactor.io.net.ReactivePeer;
-import reactor.io.net.http.HttpChannel;
-import reactor.io.net.http.HttpServer;
-import reactor.io.net.http.model.ResponseHeaders;
-import reactor.io.net.http.routing.ChannelMappings;
+import reactor.io.ipc.ChannelFlux;
+import reactor.io.ipc.ChannelFluxHandler;
+import reactor.io.netty.ReactiveNet;
+import reactor.io.netty.ReactivePeer;
+import reactor.io.netty.http.HttpChannel;
+import reactor.io.netty.http.HttpServer;
+import reactor.io.netty.http.model.ResponseHeaders;
+import reactor.io.netty.http.routing.ChannelMappings;
 
 /**
  * @author Stephane Maldini
  * @since 2.5
  */
-public final class Pylon extends ReactivePeer<Buffer, Buffer, ReactiveChannel<Buffer, Buffer>> {
+public final class Pylon extends ReactivePeer<Buffer, Buffer, ChannelFlux<Buffer, Buffer>> {
 
 	private static final Logger log = Logger.getLogger(Pylon.class);
 
@@ -163,7 +163,7 @@ public final class Pylon extends ReactivePeer<Buffer, Buffer, ReactiveChannel<Bu
 	}
 
 	/**
-	 * @see this#start(ReactiveChannelHandler)
+	 * @see this#start(ChannelFluxHandler)
 	 */
 	public final void startAndAwait() throws InterruptedException {
 		start().get();
@@ -173,14 +173,14 @@ public final class Pylon extends ReactivePeer<Buffer, Buffer, ReactiveChannel<Bu
 	}
 
 	/**
-	 * @see this#start(ReactiveChannelHandler)
+	 * @see this#start(ChannelFluxHandler)
 	 */
 	public final Mono<Void> start() throws InterruptedException {
 		return start(null);
 	}
 
 	@Override
-	protected Mono<Void> doStart(ReactiveChannelHandler<Buffer, Buffer, ReactiveChannel<Buffer, Buffer>> handler) {
+	protected Mono<Void> doStart(ChannelFluxHandler<Buffer, Buffer, ChannelFlux<Buffer, Buffer>> handler) {
 		return server.start();
 	}
 
@@ -245,7 +245,7 @@ public final class Pylon extends ReactivePeer<Buffer, Buffer, ReactiveChannel<Bu
 	}
 
 	private static class CacheManifestHandler
-			implements ReactiveChannelHandler<Buffer, Buffer, HttpChannel<Buffer, Buffer>> {
+			implements ChannelFluxHandler<Buffer, Buffer, HttpChannel<Buffer, Buffer>> {
 
 		private final Publisher<Buffer> cacheManifest;
 
