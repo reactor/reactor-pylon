@@ -39,8 +39,7 @@ import reactor.core.util.Logger;
 import reactor.io.buffer.Buffer;
 import reactor.io.ipc.ChannelFlux;
 import reactor.io.ipc.ChannelFluxHandler;
-import reactor.io.netty.ReactiveNet;
-import reactor.io.netty.ReactivePeer;
+import reactor.io.netty.common.Peer;
 import reactor.io.netty.http.HttpChannel;
 import reactor.io.netty.http.HttpServer;
 import reactor.io.netty.http.model.ResponseHeaders;
@@ -50,7 +49,7 @@ import reactor.io.netty.http.routing.ChannelMappings;
  * @author Stephane Maldini
  * @since 2.5
  */
-public final class Pylon extends ReactivePeer<Buffer, Buffer, ChannelFlux<Buffer, Buffer>> {
+public final class Pylon extends Peer<Buffer, Buffer, ChannelFlux<Buffer, Buffer>> {
 
 	private static final Logger log = Logger.getLogger(Pylon.class);
 
@@ -61,13 +60,13 @@ public final class Pylon extends ReactivePeer<Buffer, Buffer, ChannelFlux<Buffer
 	private static final String HTML_DEPENDENCY_CONSOLE    = "/index.html";
 	private static final String CACHE_MANIFEST             = "/index.appcache";
 
-	private final HttpServer<Buffer, Buffer> server;
+	private final HttpServer server;
 	private final String                     staticPath;
 
 	public static void main(String... args) throws Exception {
 		String port = System.getenv("PORT");
 		String address = args.length > 0 ? args[0] : "0.0.0.0";
-		Pylon pylon = create(ReactiveNet.httpServer(address, port != null ? Integer.parseInt(port) : 12013),
+		Pylon pylon = create(HttpServer.create(address, port != null ? Integer.parseInt(port) : 12013),
 				extractAssets() );
 
 		final CountDownLatch stopped = new CountDownLatch(1);
@@ -84,7 +83,7 @@ public final class Pylon extends ReactivePeer<Buffer, Buffer, ChannelFlux<Buffer
 	 * @return
 	 */
 	public static Pylon create() throws Exception {
-		return create(ReactiveNet.httpServer(12013));
+		return create(HttpServer.create(12013));
 	}
 
 	/**
@@ -92,7 +91,7 @@ public final class Pylon extends ReactivePeer<Buffer, Buffer, ChannelFlux<Buffer
 	 * @param server
 	 * @return
 	 */
-	public static Pylon create(HttpServer<Buffer, Buffer> server) throws Exception {
+	public static Pylon create(HttpServer server) throws Exception {
 		return create(server, findOrExtractAssets());
 	}
 
@@ -103,7 +102,7 @@ public final class Pylon extends ReactivePeer<Buffer, Buffer, ChannelFlux<Buffer
 	 * @return
 	 * @throws Exception
 	 */
-	public static Pylon create(HttpServer<Buffer, Buffer> server, String staticPath) throws Exception {
+	public static Pylon create(HttpServer server, String staticPath) throws Exception {
 
 		Pylon pylon = new Pylon(server.getDefaultTimer(), server, staticPath);
 
@@ -156,7 +155,7 @@ public final class Pylon extends ReactivePeer<Buffer, Buffer, ChannelFlux<Buffer
 		return staticPath + target;
 	}
 
-	private Pylon(Timer defaultTimer, HttpServer<Buffer, Buffer> server, String staticPath) {
+	private Pylon(Timer defaultTimer, HttpServer server, String staticPath) {
 		super(defaultTimer);
 		this.staticPath = staticPath;
 		this.server = server;
@@ -189,7 +188,7 @@ public final class Pylon extends ReactivePeer<Buffer, Buffer, ChannelFlux<Buffer
 		return server.shutdown();
 	}
 
-	public HttpServer<Buffer, Buffer> getServer() {
+	public HttpServer getServer() {
 		return server;
 	}
 
@@ -245,7 +244,7 @@ public final class Pylon extends ReactivePeer<Buffer, Buffer, ChannelFlux<Buffer
 	}
 
 	private static class CacheManifestHandler
-			implements ChannelFluxHandler<Buffer, Buffer, HttpChannel<Buffer, Buffer>> {
+			implements ChannelFluxHandler<Buffer, Buffer, HttpChannel> {
 
 		private final Publisher<Buffer> cacheManifest;
 
@@ -254,7 +253,7 @@ public final class Pylon extends ReactivePeer<Buffer, Buffer, ChannelFlux<Buffer
 		}
 
 		@Override
-		public Publisher<Void> apply(HttpChannel<Buffer, Buffer> channel) {
+		public Publisher<Void> apply(HttpChannel channel) {
 
 			return channel.responseHeader("content-type", "text/cache-manifest")
 			              .writeBufferWith(cacheManifest);
@@ -262,10 +261,10 @@ public final class Pylon extends ReactivePeer<Buffer, Buffer, ChannelFlux<Buffer
 	}
 
 	private static class AssetsInterceptor
-			implements Function<HttpChannel<Buffer, Buffer>, HttpChannel<Buffer, Buffer>> {
+			implements Function<HttpChannel, HttpChannel> {
 
 		@Override
-		public HttpChannel<Buffer, Buffer> apply(HttpChannel<Buffer, Buffer> channel) {
+		public HttpChannel apply(HttpChannel channel) {
 
 			if(channel.uri().endsWith(".css")){
 				channel.responseHeader(ResponseHeaders.CONTENT_TYPE, "text/css; charset=utf-8");
