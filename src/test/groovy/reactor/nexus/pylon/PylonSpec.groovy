@@ -15,7 +15,7 @@
  */
 package reactor.nexus.pylon
 
-import reactor.io.net.nexus.Nexus
+import reactor.io.netty.nexus.Nexus
 import spock.lang.Ignore
 import spock.lang.Specification
 

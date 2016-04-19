@@ -22,7 +22,7 @@ import org.junit.Test;
 import reactor.core.subscriber.SignalEmitter;
 import reactor.core.scheduler.Timer;
 import reactor.core.util.Exceptions;
-import reactor.io.net.nexus.Nexus;
+import reactor.io.netty.nexus.Nexus;
 
 /**
  * @author Stephane Maldini
