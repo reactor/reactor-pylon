@@ -21,6 +21,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Test;
 import reactor.core.subscriber.SignalEmitter;
 import reactor.core.scheduler.Timer;
+import reactor.core.subscriber.SubmissionEmitter;
 import reactor.core.util.Exceptions;
 import reactor.io.netty.nexus.Nexus;
 
@@ -36,7 +37,7 @@ public class PylonTests {
 
 		Pylon.create().startAndAwait();
 
-		final SignalEmitter<Object> s = nexus.streamCannon();
+		final SubmissionEmitter<Object> s = nexus.streamCannon();
 		Timer.create()
 		     .schedule(() -> {
 			      if (!s.isCancelled()) {
