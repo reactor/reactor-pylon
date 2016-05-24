@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 import React from 'react';
+import Slider from './../core/slider/Slider';
+import BufferItem from './buffer/Buffer';
+
+require('./Buffer.scss');
 
 class Buffer extends React.Component {
 
@@ -22,6 +26,18 @@ class Buffer extends React.Component {
       <div>
         <div className="heading">
           <strong>Buffer</strong>
+        </div>
+        <div className="filtering">
+          <Slider items={['Large', 'Medium', 'Small']}></Slider>
+          <div className="search">
+            <input placeholder="Find a buffer" className="input" type="text" />
+            <button type="button" className="btn btn-primary">Search</button>
+          </div>
+        </div>
+        <div className="buffers">
+          <BufferItem />
+          <BufferItem />
+          <BufferItem />
         </div>
       </div>
     );

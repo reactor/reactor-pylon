@@ -26,7 +26,7 @@ class Host extends React.Component {
         <div className="heading">
           <strong>System</strong>
         </div>
-        <div className="filtering filtering-bottom-space">
+        <div className="filtering">
           <Slider items={['Large', 'Medium', 'Small']}></Slider>
           <div className="search">
             <input className="input" type="text" placeholder="Find a stream" />
@@ -34,9 +34,9 @@ class Host extends React.Component {
           </div>
         </div>
         <div className="host-list">
-          <div className="column">
-            <Item />
-          </div>
+          <Item />
+          <Item />
+          <Item />
         </div>
       </div>
     );

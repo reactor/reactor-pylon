@@ -20,54 +20,56 @@ class Host extends React.Component {
   render() {
     return (
       <div className="host">
-        <div className="host-label">Server #1: <strong>12.2.204.201</strong></div>
-        <div className="row host-general">
-          <div className="gr-4">
-            <div className="donut-chart">
-              {
-                React.createElement(Nvd3, {
-                  id: "toto2",
-                  type:'pieChart',
-                  datum: this.getDummy2(),
-                  showLegend: false,
-                  showLabels: false,
-                  margin: {top:0,left:10,right:0,bottom:0},
-                  duration: 1,
-                  x:"key",
-                  y:"y",
-                  donut: true,
-                  donutRatio: 0.6
-                })
-              }
-              <div className="label">CPU usage</div>
-              <div className="percent">80%</div>
+        <div className="host-container">
+          <div className="host-label">Server #1: <strong>12.2.204.201</strong></div>
+          <div className="row host-general">
+            <div className="gr-4">
+              <div className="donut-chart">
+                {
+                  React.createElement(Nvd3, {
+                    id: "toto2",
+                    type:'pieChart',
+                    datum: this.getDummy2(),
+                    showLegend: false,
+                    showLabels: false,
+                    margin: {top:0,left:10,right:0,bottom:0},
+                    duration: 1,
+                    x:"key",
+                    y:"y",
+                    donut: true,
+                    donutRatio: 0.6
+                  })
+                }
+                <div className="label">CPU usage</div>
+                <div className="percent">80%</div>
+              </div>
+            </div>
+            <div className="gr-8 host-infos">
+              <img src="/images/host/linux.png" width="60px" />
+              <ul>
+                <li>OS: <strong>Debian OS</strong></li>
+                <li>Version: <strong>12.1</strong></li>
+                <li>Status: <strong>pending</strong></li>
+                <li>Memory: <strong>2Go / 20Go</strong></li>
+                <li>CPU: <strong>Intel Core 4Q</strong></li>
+              </ul>
             </div>
           </div>
-          <div className="gr-8 host-infos">
-            <img src="/images/host/linux.png" width="60px" />
-            <ul>
-              <li>OS: <strong>Debian OS</strong></li>
-              <li>Version: <strong>12.1</strong></li>
-              <li>Status: <strong>pending</strong></li>
-              <li>Memory: <strong>2Go / 20Go</strong></li>
-              <li>CPU: <strong>Intel Core 4Q</strong></li>
-            </ul>
+          <div>
+            {
+              React.createElement(Nvd3, {
+                type:'lineChart',
+                id: "toto1",
+                datum: this.getDummy(),
+                margin: {left: 20, bottom: 20, right: 10, top:0},
+                useInteractiveGuideline: true,
+                showYAxis: true,
+                showXAxis: true,
+                forceY: [0,100],
+                duration: 1
+              })
+            }
           </div>
-        </div>
-        <div>
-          {
-            React.createElement(Nvd3, {
-              type:'lineChart',
-              id: "toto1",
-              datum: this.getDummy(),
-              margin: {left: 20, bottom: 20, right: 10, top:0},
-              useInteractiveGuideline: true,
-              showYAxis: true,
-              showXAxis: true,
-              forceY: [0,100],
-              duration: 1
-            })
-          }
         </div>
       </div>
     )

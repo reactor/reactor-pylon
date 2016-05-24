@@ -1,17 +1,20 @@
 @import "../../styles/plugins";
 
+$host-gutter: 0.7rem;
+
 .host-list {
-  margin-left: -20px;
-  margin-bottom: 20px;
   @include clearfix();
-  .column {
+  margin-left: -$host-gutter;
+  margin-right: -$host-gutter;
+  margin-top: $host-gutter;
+  .host {
     width: 50%;
     float: left;
-    .host {
+    .host-container {
       display: block;
       border: 5px solid $reactorBorder;
       padding: 1rem;
-      margin-left: 20px;
+      margin: $host-gutter;
       .donut-chart {
         position: relative;
         height: 155px;

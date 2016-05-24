@@ -1,0 +1,11 @@
+@import "../../styles/plugins";
+
+$buffer-gutter: 0.7rem;
+
+.buffers {
+  padding: 0;
+  margin-left: -$buffer-gutter;
+  margin-right: -$buffer-gutter;
+  margin-top: $buffer-gutter;
+  @include clearfix();
+}
