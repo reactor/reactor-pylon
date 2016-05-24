@@ -1,0 +1,119 @@
+$slider-font-size: 10px;
+$slider-color: #707070;
+$slider-active-color: #222222;
+$slider-border-color: #c2c2c2;
+$slider-separator-color: #dadada;
+$slider-selection-background: #71b741;
+
+.slider {
+  float: left;
+  font-size: $slider-font-size;
+  color: $slider-color;
+  position: relative;
+  padding-right: 10px;
+  padding-bottom: 2px;
+  margin-right: 10px;
+  border-right: 2px dotted $slider-separator-color;
+  margin-top: 4px;
+  ul {
+    li {
+      float: left;
+      display: block;
+      width: 50px;
+      text-align: center;
+      position: relative;
+      height: 26px;
+      line-height: 20px;
+      &:after {
+        content: ' ';
+        width: 100%;
+        height: 2px;
+        background: $slider-border-color;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+      &:before {
+        content: ' ';
+        width: 2px;
+        height: 4px;
+        background: $slider-border-color;
+        position: absolute;
+        bottom: 4px;
+        left: 50%;
+        margin-left: -1px;
+      }
+      span {
+        padding-top: 0;
+        display: block;
+        text-align: center;
+        cursor: pointer;
+      }
+      &.active {
+        span {
+          color: $slider-active-color;
+        }
+      }
+      &:first-child {
+        &:after {
+          width: 50%;
+          left: 50%;
+        }
+        &:before {
+          height: 7px;
+          bottom: 0;
+        }
+      }
+      &:last-child {
+        &:after {
+          width: 50%;
+        }
+        &:before {
+          height: 7px;
+          bottom: 0;
+        }
+      }
+    }
+  }
+  .slider-status {
+    position: absolute;
+    bottom: 3px;
+    .arrow-triangle {
+      position: relative;
+      background-color: $slider-selection-background;
+      text-align: left;
+    }
+
+    .arrow-triangle:before,
+    .arrow-triangle:after {
+      content: '';
+      position: absolute;
+      background-color: inherit;
+    }
+
+    .arrow-triangle,
+    .arrow-triangle:before,
+    .arrow-triangle:after {
+      width:  6px;
+      height: 6px;
+      border-top-right-radius: 30%;
+    }
+
+    .arrow-triangle {
+      transform: rotate(-60deg) skewX(-30deg) scale(1,.866);
+    }
+
+    .arrow-triangle:before {
+      transform: rotate(-135deg) skewX(-45deg) scale(1.414,.707) translate(0,-50%);
+    }
+
+    .arrow-triangle:after {
+      transform: rotate(135deg) skewY(-45deg) scale(.707,1.414) translate(50%);
+    }
+  }
+
+
+
+
+
+}

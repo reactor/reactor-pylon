@@ -30,6 +30,7 @@ import Flux from './flux/Flux';
 import Buffer from './buffer/Buffer';
 import System from './system/System';
 import Log from './log/Log';
+import Replay from './replay/Replay';
 import NotFound from './core/NotFound';
 
 export default (
@@ -42,6 +43,7 @@ export default (
       <Route component={Buffer} path="buffer"/>
       <Route component={System} path="system"/>
       <Route component={Log} path="log"/>
+      <Route component={Replay} path="replay"/>
       <Route component={NotFound} path="*" />
     </Route>
   </Router>

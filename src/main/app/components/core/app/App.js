@@ -1,8 +1,8 @@
 import React from 'react';
 
-require('styles/core/App.scss');
 import Main from './../layout/Main';
 import Navigation from './../navigation/Navigation';
+import Mode from './../navigation/Mode';
 
 class App extends React.Component {
 
@@ -13,6 +13,7 @@ class App extends React.Component {
           <div className="sidebar-left">
             <div id="logo"><a href="#"><span>Reactor Console Beta</span></a></div>
             <Navigation></Navigation>
+            <Mode></Mode>
           </div>
         </div>
         <div id="application-main">

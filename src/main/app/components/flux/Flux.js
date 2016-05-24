@@ -15,6 +15,7 @@
  */
 import React from 'react';
 import Details from './details/Details';
+import Slider from './../core/slider/Slider';
 
 require('./Flux.scss');
 
@@ -26,8 +27,18 @@ class Flux extends React.Component {
         <div className="heading">
           <strong>Flux</strong>
         </div>
+        <div className="filtering">
+          <Slider items={['All', 'Host', 'Stream', 'Operator']}></Slider>
+          <div className="search sep">
+            <input placeholder="Find a host / stream / operator" className="input" type="text" />
+            <button type="button" className="btn btn-primary">Search</button>
+          </div>
+          <div className="links">
+            <a>More filters</a> | <a>Debug</a>
+          </div>
+        </div>
         <div className="flux">
-          <div className="flux-map">ICI</div>
+          <div className="flux-map"></div>
           <div className="flux-details">
             <Details></Details>
           </div>

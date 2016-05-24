@@ -1,21 +1,51 @@
 $filtering-background: $reactorBackgroundLight;
+$filtering-color: #888;
 $filtering-padding-x: 0.45rem;
 $filtering-padding-y: 0.45rem;
+$filtering-border-color: #dadada;
 
 .filtering {
   background: $filtering-background;
   border-bottom: 2px solid rgba(0,0,0,.05);
-  padding: $filtering-padding-y $filtering-padding-x;
+  padding: $filtering-padding-y $filtering-padding-x ($filtering-padding-y + 0.1) $filtering-padding-x;
   @include clearfix();
+  color: $filtering-color;
+  line-height: 35px;
 
   .input {
     float: left;
-    width: auto;
-    margin-right: 0.5rem;
+    padding: 0.65rem 0.8rem 0.55rem;
+    margin-right: 5px;
+    font-size: 12px;
+    width: 200px;
   }
   .btn {
+    margin: 0rem;
+    padding: 0.675rem 1.5rem
   }
   &.filtering-bottom-space {
     margin-bottom: 1rem;
+  }
+  .search {
+    float: left;
+    margin: 0.3rem 0.5rem 0.2rem 0.2rem;
+    line-height: 20px;
+    &.sep {
+      padding-right: 15px;
+      border-right: 2px dotted $filtering-border-color;
+    }
+  }
+  .links {
+    padding-left: 6px;
+    padding-top: 1px;
+    float: left;
+    a {
+      padding: 0 4px;
+      text-decoration: underline;
+      cursor: pointer;
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 }

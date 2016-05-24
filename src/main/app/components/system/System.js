@@ -15,6 +15,8 @@
  */
 import React from 'react';
 import Item from "./host/host";
+import Slider from './../core/slider/Slider';
+
 require('./System.scss');
 
 class Host extends React.Component {
@@ -25,8 +27,11 @@ class Host extends React.Component {
           <strong>System</strong>
         </div>
         <div className="filtering filtering-bottom-space">
-          <input className="input" type="text" placeholder="Find a stream" />
-          <button type="submit" className="btn btn-primary">Search</button>
+          <Slider items={['Large', 'Medium', 'Small']}></Slider>
+          <div className="search">
+            <input className="input" type="text" placeholder="Find a stream" />
+            <button type="submit" className="btn btn-primary">Search</button>
+          </div>
         </div>
         <div className="host-list">
           <div className="column">
