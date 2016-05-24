@@ -88,3 +88,51 @@ $buffer-gutter: 0.7rem;
     }
   }
 }
+
+// View mode
+.view-large {
+
+}
+
+.view-medium {
+  .buffer {
+    width: 33.3%;
+    .buffer-container {
+      .buffer-content {
+        .right {
+          margin-left: 0;
+          border: 0 none;
+          .metrics {
+            top: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.view-small {
+  .buffer {
+    width: 100%;
+    &:last-child {
+      .buffer-container {
+        //border-bottom: 4px solid #e8e8e8;
+      }
+    }
+    .buffer-container {
+      margin-top: 0;
+      margin-bottom: 0;
+      border: 0 none;
+      border-top: 4px solid white;
+      .buffer-content {
+        .right {
+          margin-left: 0;
+          border: 0 none;
+          .metrics {
+            top: 10px;
+          }
+        }
+      }
+    }
+  }
+}

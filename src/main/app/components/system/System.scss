@@ -1,6 +1,7 @@
 @import "../../styles/plugins";
 
 $host-gutter: 0.7rem;
+$host-progress-height: 8px;
 
 .host-list {
   @include clearfix();
@@ -64,4 +65,55 @@ $host-gutter: 0.7rem;
       }
     }
   }
+
+  .host-small {
+    margin: $host-gutter;
+    border-bottom: 2px solid #F2F2F2;
+    padding-bottom: $host-gutter;
+    @include clearfix();
+    .left {
+      float: left;
+      width: 50%;
+      ul {
+        color: #888;
+        li {
+          display: inline;
+          border-right: 2px solid #F2F2F2;
+          font-size: 11px;
+          padding: 0 5px;
+          &:first-child {
+            padding-left: 0;
+          }
+          &:last-child {
+            border-right: 0 none;
+          }
+        }
+      }
+    }
+    .right {
+      float: left;
+      width: 50%;
+      padding-top: 5px;
+      .progress {
+        height: $host-progress-height;
+        background: #e8e8e8;
+        margin-bottom: 2px;
+        margin-left: 10px;
+        .value {
+          height: $host-progress-height;
+          background: #6cb437;
+          &.green {
+            background: #6cb437;
+          }
+          &.blue {
+            background: #40a7ff;
+          }
+          &.red {
+            background: #ff5240;
+          }
+        }
+      }
+    }
+  }
+
 }

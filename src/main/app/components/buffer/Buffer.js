@@ -21,23 +21,48 @@ require('./Buffer.scss');
 
 class Buffer extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = { view: 0 };
+  }
+
+  viewChange(view) {
+    if (this.state.view != view) {
+      this.setState({view: view});
+    }
+  }
+
   render() {
+    var classView;
+    switch (this.state.view) {
+      case 0: classView = 'view-large'; break;
+      case 1: classView = 'view-medium'; break;
+      case 2: classView = 'view-small'; break;
+    }
     return (
-      <div>
+      <div className={classView}>
         <div className="heading">
           <strong>Buffer</strong>
         </div>
         <div className="filtering">
-          <Slider items={['Large', 'Medium', 'Small']}></Slider>
+          <Slider onChange={this.viewChange.bind(this)} items={['Large', 'Medium', 'Small']}></Slider>
           <div className="search">
             <input placeholder="Find a buffer" className="input" type="text" />
             <button type="button" className="btn btn-primary">Search</button>
           </div>
         </div>
         <div className="buffers">
-          <BufferItem />
-          <BufferItem />
-          <BufferItem />
+          <BufferItem mode={this.state.view} />
+          <BufferItem mode={this.state.view} />
+          <BufferItem mode={this.state.view} />
+          <BufferItem mode={this.state.view} />
+          <BufferItem mode={this.state.view} />
+          <BufferItem mode={this.state.view} />
+          <BufferItem mode={this.state.view} />
+          <BufferItem mode={this.state.view} />
+          <BufferItem mode={this.state.view} />
+          <BufferItem mode={this.state.view} />
+          <BufferItem mode={this.state.view} />
         </div>
       </div>
     );

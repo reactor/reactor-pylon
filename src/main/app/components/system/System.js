@@ -20,23 +20,40 @@ import Slider from './../core/slider/Slider';
 require('./System.scss');
 
 class Host extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { view: 0 };
+  }
+
+  viewChange(view) {
+    if (this.state.view != view) {
+      this.setState({view: view});
+    }
+  }
+
   render() {
+    var classView;
+    switch (this.state.view) {
+      case 0: classView = 'view-large'; break;
+      case 1: classView = 'view-small'; break;
+    }
     return (
-      <div>
+      <div className={classView}>
         <div className="heading">
           <strong>System</strong>
         </div>
         <div className="filtering">
-          <Slider items={['Large', 'Medium', 'Small']}></Slider>
+          <Slider onChange={this.viewChange.bind(this)} items={['Large', 'Small']}></Slider>
           <div className="search">
             <input className="input" type="text" placeholder="Find a stream" />
             <button type="submit" className="btn btn-primary">Search</button>
           </div>
         </div>
         <div className="host-list">
-          <Item />
-          <Item />
-          <Item />
+          <Item mode={this.state.view} />
+          <Item mode={this.state.view} />
+          <Item mode={this.state.view} />
         </div>
       </div>
     );

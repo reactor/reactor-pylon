@@ -19,9 +19,67 @@ import Nvd3 from './../../core/chart/Nvd3';
 require('./Buffer.scss');
 
 class Buffer extends React.Component {
-    render() {
-        return (
 
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+
+        var left, right;
+
+        if (this.props.mode == 0) {
+            left = <div className="left">
+                <div className="donut-chart">
+                    {
+                        React.createElement(Nvd3, {
+                            id: "toto2",
+                            type:'pieChart',
+                            datum: this.getDummy2(),
+                            showLegend: false,
+                            showLabels: false,
+                            margin: {top:0,left:10,right:0,bottom:0},
+                            duration: 1,
+                            x:"key",
+                            y:"y",
+                            donut: true,
+                            donutRatio: 0.6,
+                            height: 100
+                        })
+                    }
+                </div>
+            </div>
+        }
+
+        if (this.props.mode == 0 || this.props.mode == 1) {
+            var height = this.props.mode == 1 ? 80 : 120;
+            right = <div className="right">
+                <div className="chart">
+                    {
+                        React.createElement(Nvd3, {
+                            type:'lineChart',
+                            id: "toto1",
+                            datum: this.getDummy(),
+                            margin: {left: 20, bottom: 10, right: 10, top:10},
+                            useInteractiveGuideline: true,
+                            showYAxis: false,
+                            showXAxis: false,
+                            showLegend: false,
+                            forceY: [0,100],
+                            duration: 1,
+                            height: height
+                        })
+                    }
+                </div>
+                <ul className="metrics">
+                    <li><strong>Host:</strong> <span>4,231.3/s</span></li>
+                    <li><strong>Cluster:</strong> <span>3,234,231.3/s</span></li>
+                    <li><strong>Stream:</strong> <span>OK</span></li>
+                </ul>
+            </div>
+        }
+
+        return (
             <div className="buffer">
                 <div className="buffer-container">
                     <div className="buffer-head">
@@ -32,50 +90,8 @@ class Buffer extends React.Component {
                         <span className="percent">30%</span>
                     </div>
                     <div className="buffer-content">
-                        <div className="left">
-                            <div className="donut-chart">
-                                {
-                                    React.createElement(Nvd3, {
-                                        id: "toto2",
-                                        type:'pieChart',
-                                        datum: this.getDummy2(),
-                                        showLegend: false,
-                                        showLabels: false,
-                                        margin: {top:0,left:10,right:0,bottom:0},
-                                        duration: 1,
-                                        x:"key",
-                                        y:"y",
-                                        donut: true,
-                                        donutRatio: 0.6,
-                                        height: 100
-                                    })
-                                }
-                            </div>
-                        </div>
-                        <div className="right">
-                            <div className="chart">
-                                {
-                                    React.createElement(Nvd3, {
-                                        type:'lineChart',
-                                        id: "toto1",
-                                        datum: this.getDummy(),
-                                        margin: {left: 20, bottom: 10, right: 10, top:10},
-                                        useInteractiveGuideline: true,
-                                        showYAxis: false,
-                                        showXAxis: false,
-                                        showLegend: false,
-                                        forceY: [0,100],
-                                        duration: 1,
-                                        height: 120
-                                    })
-                                }
-                            </div>
-                            <ul className="metrics">
-                                <li><strong>Host:</strong> <span>4,231.3/s</span></li>
-                                <li><strong>Cluster:</strong> <span>3,234,231.3/s</span></li>
-                                <li><strong>Stream:</strong> <span>OK</span></li>
-                            </ul>
-                        </div>
+                        {left}
+                        {right}
                     </div>
                 </div>
             </div>

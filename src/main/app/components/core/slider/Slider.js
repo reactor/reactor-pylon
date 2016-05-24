@@ -12,6 +12,9 @@ class Slider extends React.Component {
 
     handleComponent(index) {
         this.setState({selected: index});
+
+        if (this.props.onChange)
+            this.props.onChange(index);
     }
 
     render() {
