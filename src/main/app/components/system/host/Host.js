@@ -69,7 +69,7 @@ class Host extends React.Component {
                 </div>
                 <div className="gr-8">
                   <div className="host-infos">
-                    <img src="/images/host/linux.png" width="60px" />
+                    <img src="/assets/images/host/linux.png" width="60px" />
                     {info}
                   </div>
                 </div>

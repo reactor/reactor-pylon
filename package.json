@@ -5,9 +5,12 @@
   "main": "",
   "scripts": {
     "clean": "rimraf src/main/resources/public/*",
-    "copy": "copyfiles -f ./src/main/app/index.html ./src/main/app/favicon.ico ./src/main/resources/public",
-    "copy:build": "copyfiles -f ./src/main/app/index.html ./src/main/app/favicon.ico ./build/classes/public/public",
-    "dist": "npm run copy & webpack --env=dist",
+    "copy": "copyfiles -f ./src/main/app/index.html ./src/main/resources/public",
+    "copy:images" : "copyfiles -u 4 ./src/main/app/assets/images/* ./src/main/app/assets/images/**/* ./src/main/resources/public/assets",
+    "copy:all" : "npm run copy & copyfiles -u 4 ./src/main/app/assets/images/* ./src/main/app/assets/images/**/* ./src/main/resources/public/assets",
+    "copy:build:images" : "copyfiles -u 4 ./src/main/resources/public/assets/* ./src/main/resources/public/assets/**/**/* ./build/classes/main/public",
+    "copy:build": "npm run copy:all & npm run copy:build:images & copyfiles -f ./src/main/app/index.html ./build/classes/main/public",
+    "dist": "npm run copy:build & webpack --env=dist",
     "lint": "eslint ./src/main/app",
     "posttest": "npm run lint",
     "release:major": "npm version major && npm publish && git push --follow-tags",
@@ -71,21 +74,23 @@
     "webpack": "^1.12.0",
     "webpack-dev-server": "^1.12.0",
     "sass-loader": "^3.1.2",
-    "node-sass" : "^3.4.2",
+    "node-sass": "^3.4.2",
     "compass-mixins": "^0.12.6",
-    "raw-loader":"^0.5.1"
+    "extract-text-webpack-plugin": "^1.0.1",
+    "raw-loader": "^0.5.1"
   },
   "dependencies": {
+    "@reactivex/rxjs": "^5.0.0-beta.2",
     "core-js": "^2.0.0",
+    "d3": "^3.5.16",
+    "font-awesome": "^4.4.0",
+    "gridle": "^2.0.44",
+    "moment": "^2.12.0",
     "normalize.css": "^3.0.3",
+    "nvd3": "^1.8.2",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
-    "@reactivex/rxjs": "^5.0.0-beta.2",
     "react-router": "^2.0.0",
-    "gridle": "^2.0.44",
-    "font-awesome": "^4.4.0",
-    "d3": "^3.5.16",
-    "moment": "^2.12.0",
-    "nvd3": "^1.8.2"
+    "reactor-core-js": "^0.3.0"
   }
 }

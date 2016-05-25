@@ -24,8 +24,22 @@ let defaultSettings = require('./defaults');
 // Add needed plugins here
 let BowerWebpackPlugin = require('bower-webpack-plugin');
 
+let npmBase = path.join(__dirname, '../node_modules');
+let additionalPaths = [path.join(npmBase, '@reactivex/rxjs'),
+  path.join(npmBase, 'reactor-core-js'), path.join(npmBase, 'react'),
+  path.join(npmBase, 'd3'), path.join(npmBase, 'normalize'),
+  path.join(npmBase, 'core-js'), path.join(npmBase, 'moment'),
+  path.join(npmBase, 'gridle'), path.join(npmBase, 'font-awesome')];
+
 let config = Object.assign({}, baseConfig, {
-  entry: path.join(__dirname, '../src/main/app/index'),
+  additionalPaths: additionalPaths,
+  entry: {
+    pylon : './src/main/app/index'
+  },
+  output: {
+    filename: "./src/main/resources/public/assets/[name].js",
+    chunkFilename: "./src/main/resources/public/assets/[id].js"
+  },
   cache: false,
   devtool: 'sourcemap',
   plugins: [
@@ -43,6 +57,7 @@ let config = Object.assign({}, baseConfig, {
   ],
   module: defaultSettings.getDefaultModules()
 });
+
 
 // Add needed loaders to the defaults here
 config.module.loaders.push({
