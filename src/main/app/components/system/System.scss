@@ -43,21 +43,25 @@ $host-progress-height: 8px;
       }
       .host-label {
         text-align: center;
+        a {
+          color: #000;
+          cursor: pointer;
+          &:hover {
+            color: $reactorPrimary;
+          }
+        }
       }
       .host-general {
         padding-top: 1.4rem;
         padding-bottom: .4rem;
         .host-infos {
-          position: relative;
           ul {
+            border-left: 2px solid $reactorBorder;
+            padding-left: 120px;
             padding-top: 3rem;
             padding-bottom: 3rem;
-            font-size: 12px;
-            padding-left: 120px;
-            border-left: 2px solid $reactorBorder;
           }
           img {
-            position: absolute;
             left: 40px;
             top: 3.8rem;
           }
@@ -71,6 +75,12 @@ $host-progress-height: 8px;
     border-bottom: 2px solid #F2F2F2;
     padding-bottom: $host-gutter;
     @include clearfix();
+    a {
+      color: #000;
+      &:hover {
+        color: $reactorPrimary;
+      }
+    }
     .left {
       float: left;
       width: 50%;
@@ -115,5 +125,17 @@ $host-progress-height: 8px;
       }
     }
   }
+}
 
+.host-infos {
+  position: relative;
+  ul {
+    font-size: 12px;
+    padding-left: 100px;
+  }
+  img {
+    position: absolute;
+    left: 20px;
+    top: 10px;
+  }
 }

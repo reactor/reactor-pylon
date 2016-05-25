@@ -29,6 +29,7 @@ import Metric from './metric/Metric';
 import Flux from './flux/Flux';
 import Buffer from './buffer/Buffer';
 import System from './system/System';
+import HostView from './system/view/HostView';
 import Log from './log/Log';
 import Replay from './replay/Replay';
 import NotFound from './core/NotFound';
@@ -41,7 +42,9 @@ export default (
       <Route component={Metric} path="metric"/>
       <Route component={Flux} path="flux"/>
       <Route component={Buffer} path="buffer"/>
-      <Route component={System} path="system"/>
+      <Route component={System} path="system">
+      </Route>
+      <Route component={HostView} path="system/host/:hostId"/>
       <Route component={Log} path="log"/>
       <Route component={Replay} path="replay"/>
       <Route component={NotFound} path="*" />

@@ -38,6 +38,13 @@ class Host extends React.Component {
       case 0: classView = 'view-large'; break;
       case 1: classView = 'view-small'; break;
     }
+
+    var dummy = [
+      {id: 1, name: 'Server #1', ip: '12.2.204.201'},
+      {id: 2, name: 'Server #2', ip: '12.2.204.202'},
+      {id: 3, name: 'Server #3', ip: '12.2.204.203'}
+    ];
+
     return (
       <div className={classView}>
         <div className="heading">
@@ -51,9 +58,9 @@ class Host extends React.Component {
           </div>
         </div>
         <div className="host-list">
-          <Item mode={this.state.view} />
-          <Item mode={this.state.view} />
-          <Item mode={this.state.view} />
+          {dummy.map(function(item){
+            return <Item key={item.id} host={item} mode={this.state.view} />
+          }, this)}
         </div>
       </div>
     );

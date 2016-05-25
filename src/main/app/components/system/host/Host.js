@@ -15,6 +15,7 @@
  */
 import React from 'react';
 import Nvd3 from './../../core/chart/Nvd3';
+import { Link } from 'react-router'
 
 class Host extends React.Component {
 
@@ -24,14 +25,19 @@ class Host extends React.Component {
 
   render() {
 
-    var name = <div className="host-label">Server #1: <strong>12.2.204.201</strong></div>;
+    var name = <div className="host-label">
+      <Link to={`/pylon/system/host/${this.props.host.id}`}>
+        {this.props.host.name}: <strong>{this.props.host.ip}</strong>
+      </Link>
+    </div>;
+
     var info = <ul>
-      <li>OS: <strong>Debian OS</strong></li>
-      <li>Version: <strong>12.1</strong></li>
-      <li>Status: <strong>pending</strong></li>
-      <li>Memory: <strong>2Go / 20Go</strong></li>
-      <li>CPU: <strong>Intel Core 4Q</strong></li>
-    </ul>;
+        <li>OS: <strong>Debian OS</strong></li>
+        <li>Version: <strong>12.1</strong></li>
+        <li>Status: <strong>pending</strong></li>
+        <li>Memory: <strong>2Go / 20Go</strong></li>
+        <li>CPU: <strong>Intel Core 4Q</strong></li>
+      </ul>;
 
     var result = null;
     if (this.props.mode == 0) {
@@ -61,9 +67,11 @@ class Host extends React.Component {
                     <div className="percent">80%</div>
                   </div>
                 </div>
-                <div className="gr-8 host-infos">
-                  <img src="/images/host/linux.png" width="60px" />
-                  {info}
+                <div className="gr-8">
+                  <div className="host-infos">
+                    <img src="/images/host/linux.png" width="60px" />
+                    {info}
+                  </div>
                 </div>
               </div>
               <div>

@@ -127,7 +127,7 @@ strong {
     display: block;
     width: 56px;
     height: 34px;
-    background: url(../images/logo.png) 0 0 no-repeat;
+    background: url(/images/logo.png) 0 0 no-repeat;
     background-size: 56px 68px;
     text-indent: -6000em;
     margin: 0 auto;
@@ -167,5 +167,8 @@ strong {
   margin-bottom: 0.8rem;
   strong {
     font-weight: normal;
+  }
+  &.heading-h2 {
+    font-size: 1.5em;
   }
 }

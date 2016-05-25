@@ -1,0 +1,31 @@
+@import "../../../styles/plugins";
+
+$host-gutter: 0.7rem;
+
+.host-view {
+  padding: $host-gutter 0;
+  h2 {
+    font-weight: lighter;
+    text-align: center;
+    border-bottom: 2px solid #F2F2F2;
+    padding: 0.6rem 0;
+    margin-bottom: 1rem;
+  }
+  .statistics {
+    margin: 1.8rem 0;
+    padding: 0.7rem 20px;
+    background-color: #F1F1F1;
+    .row {
+    }
+    h2 {
+      border-bottom: 0 none;
+      margin-bottom: 2px;
+    }
+    .chart {
+      background-color: white;
+      border: 1Px solid #CCC;
+      padding: 15px 15px 5px 5px;
+      margin-bottom: 10px;
+    }
+  }
+}
