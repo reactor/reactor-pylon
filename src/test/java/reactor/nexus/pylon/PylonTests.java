@@ -19,7 +19,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
-import reactor.core.subscriber.SignalEmitter;
 import reactor.core.scheduler.Timer;
 import reactor.core.subscriber.SubmissionEmitter;
 import reactor.core.util.Exceptions;
