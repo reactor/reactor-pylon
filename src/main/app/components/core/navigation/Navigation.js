@@ -7,7 +7,7 @@ class Navigation extends React.Component {
     return (
       <ul>
         <li><Link activeClassName="active" to="/pylon/dashboard">Dashboard</Link></li>
-        <li><Link activeClassName="active" to="/pylon/metric">Metrics</Link></li>
+        <li className="hide"><Link activeClassName="active" to="/pylon/metric">Metrics</Link></li>
         <li><Link activeClassName="active" to="/pylon/flux">Flux</Link></li>
         <li><Link activeClassName="active" to="/pylon/buffer">Buffers</Link></li>
         <li><Link activeClassName="active" to="/pylon/system">System</Link></li>

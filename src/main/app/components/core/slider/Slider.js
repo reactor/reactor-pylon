@@ -12,16 +12,15 @@ class Slider extends React.Component {
 
     handleComponent(index) {
         this.setState({selected: index});
-
         if (this.props.onChange)
             this.props.onChange(index);
     }
 
     render() {
-        var style = {
-            'left': 22 + (this.state.selected * 50) + "px"
+        let style = {
+            'left': `${22 + (this.state.selected * 50)}px`
         };
-        var items = this.props.items;
+        let items = this.props.items;
         return (
             <div className="slider">
                 <ul>
@@ -37,7 +36,7 @@ class Slider extends React.Component {
 
 var SliderItemWrapper = React.createClass({
     render: function() {
-        var classSelected = (this.props.selected == this.props.id) ? 'active' : '';
+        let classSelected = (this.props.selected == this.props.id) ? 'active' : '';
         return <li className={classSelected}><span onClick={this.props.onClick.bind(this, this.props.id)}>{this.props.label}</span></li>;
     }
 });

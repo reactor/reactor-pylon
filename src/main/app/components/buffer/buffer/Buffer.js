@@ -15,6 +15,7 @@
  */
 import React from 'react';
 import Nvd3 from './../../core/chart/Nvd3';
+import classNames from 'classnames'
 
 require('./Buffer.scss');
 
@@ -27,7 +28,8 @@ class Buffer extends React.Component {
     render() {
 
         var left, right;
-
+        let dummy = this.getDummy2();
+        let val = dummy[0].y;
         if (this.props.mode == 0) {
             left = <div className="left">
                 <div className="donut-chart">
@@ -35,7 +37,7 @@ class Buffer extends React.Component {
                         React.createElement(Nvd3, {
                             id: "toto2",
                             type:'pieChart',
-                            datum: this.getDummy2(),
+                            datum: dummy,
                             showLegend: false,
                             showLabels: false,
                             margin: {top:0,left:10,right:0,bottom:0},
@@ -79,15 +81,22 @@ class Buffer extends React.Component {
             </div>
         }
 
+        var style = {width: val + '%'};
+        let classStatus = classNames({
+            'error': val > 90,
+            'warning': val > 60,
+            'buffer': true
+        });
+
         return (
-            <div className="buffer">
+            <div className={classStatus}>
                 <div className="buffer-container">
                     <div className="buffer-head">
                         <span className="label">MessageMetadataDico</span>
-                        <div className="progress">
+                        <div className="progress" style={style}>
                             <span className="label">MessageMetadataDico</span>
                         </div>
-                        <span className="percent">30%</span>
+                        <span className="percent">{val}%</span>
                     </div>
                     <div className="buffer-content">
                         {left}
@@ -109,9 +118,14 @@ class Buffer extends React.Component {
     }
 
     getDummy2() {
+        let a1 = Math.floor(Math.random() * 100) + 1;
+        let color = "#60b124";
+        if (a1 > 60) color = "#ffa42d";
+        if (a1 > 90) color = "#ff5240";
+
         return [
-            {key: "One", y: 80, color: "#60b124"},
-            {key: "Two", y: 20, color: "#e5e5e5"},
+            {key: "Using", y: a1, color: color},
+            {key: "Free", y: (100-a1), color: "#e5e5e5"},
         ];
     }
 

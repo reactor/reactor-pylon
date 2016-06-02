@@ -1,5 +1,5 @@
 $dropdown-padding-y: 0.7rem;
-$dropdown-padding-x: 1.2rem;
+$dropdown-padding-x: 0.7rem;
 $font-size-base: 14px;
 $line-height: 15px;
 
@@ -12,6 +12,9 @@ $dropdownborder-bottom-color: #d2d2d2;
 $dropdown-bg-disabled: #f4f4f4;
 
 $dropdownborder-radius: 0.25rem;
+
+$zindex-dropdown: 1000;
+$dropdown-border: #CCC;
 
 @mixin dropdown($background, $border, $borderBottom, $color, $backgroundDisabled) {
   $hover-background: darken($background, 8%);
@@ -33,29 +36,78 @@ $dropdownborder-radius: 0.25rem;
   }
 }
 
-.dropdown, a.dropdown {
-  display: inline;
-  padding: $dropdown-padding-y $dropdown-padding-x;
-  font-size: $font-size-base;
-  line-height: $line-height;
+.dropdown-control {
   position: relative;
-  background-image: none;
-  padding-right: 3rem;
-  @include border-radius($dropdownborder-radius);
-  @include transition(background ease-in-out .15s, border-color ease-in-out .15s);
+  display: inline;
   cursor: pointer;
-  &:disabled {
-    cursor: not-allowed;
-  }
-  &:hover {
-    text-decoration: none;
+  .dropdown-placeholder, a.dropdown-placeholder {
+    display: inline;
+    padding: $dropdown-padding-y $dropdown-padding-x;
+    font-size: $font-size-base;
+    line-height: $line-height;
+    position: relative;
+    background-image: none;
+    padding-right: 3rem;
+    @include border-radius($dropdownborder-radius);
+    @include transition(background ease-in-out .15s, border-color ease-in-out .15s);
+    cursor: pointer;
+    @include dropdown($dropdown-bg, $dropdownborder-color, $dropdownborder-bottom-color, $dropdown-color, $dropdown-bg-disabled);
+    &:disabled {
+      cursor: not-allowed;
+    }
+    &:hover {
+      text-decoration: none;
+    }
   }
   .caret {
-    top: 10px;
+    top: 7px;
     right: 12px;
   }
 }
 
-.dropdown-primary {
-  @include dropdown($dropdown-bg, $dropdownborder-color, $dropdownborder-bottom-color, $dropdown-color, $dropdown-bg-disabled);
+.dropdown-root {
+  position: relative;
+  display: inline;
+}
+
+// The dropdown menu (ul)
+.dropdown-menu {
+  position: absolute;
+  //top: 100%;
+  left: 0;
+  z-index: $zindex-dropdown;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0; // override default ul
+  font-size: 12px;
+  text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+  list-style: none;
+  background-color: $dropdown-bg;
+  background-clip: padding-box;
+  border: 1px solid $dropdown-border;
+  line-height: 25px;
+  //@include border-radius($border-radius);
+  //@include box-shadow(0 6px 12px rgba(0,0,0,.175));
+
+  .dropdown-option {
+    padding: 0 0.5rem;
+    &:hover {
+      background: #F1F1F1;
+      cursor: pointer;
+    }
+    &.is-selected, &.is-selected:hover {
+      color: white;
+      background: $reactorPrimary;
+
+    }
+  }
+  .dropdown-group {
+    padding: 0 0.5rem;
+    .dropdown-option {
+      padding: 0 1rem;
+      margin: 0 -0.5rem;
+    }
+  }
+
 }

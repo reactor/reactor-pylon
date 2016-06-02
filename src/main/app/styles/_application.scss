@@ -117,6 +117,30 @@ strong {
   border-top: 1px solid #e8e8e8;
   right: 0;
   padding: 10px 0;
+  height: 35px;
+}
+
+// Server informations
+.sidebar-server {
+  position: absolute;
+  border-top: 1px solid #e8e8e8;
+  bottom: 55px;
+  background: #f8f8f8;
+  left: 0;
+  right: 0;
+  padding: 7px 0;
+  font-size: 11px;
+  span.ip {
+    padding-left: 10px;
+    font-weight: lighter;
+    display: block;
+  }
+  a {
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    cursor: pointer;
+  }
 }
 
 // Logo Spring Console
@@ -170,5 +194,39 @@ strong {
   }
   &.heading-h2 {
     font-size: 1.5em;
+  }
+  &.space {
+    padding-top: 3rem;
+  }
+  .dropdown-root {
+    margin-left: 10px;
+    .dropdown-menu {
+      top: 26px;
+    }
+  }
+}
+
+.sidebar-right {
+  h2 {
+    background: #f8f8f8;
+    padding: 15px 10px;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    &.first {
+      border-top: 0 none;
+    }
+    strong {
+      font-weight: bold;
+      font-size: 15px;
+    }
+    .dropdown-root {
+      margin-left: 10px;
+      .dropdown-placeholder {
+        font-size: 12px;
+      }
+      .caret {
+        top: 2px;
+      }
+    }
   }
 }

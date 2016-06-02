@@ -88,6 +88,20 @@ $buffer-gutter: 0.7rem;
       }
     }
   }
+  &.warning {
+    .buffer-head {
+      .progress {
+        background: #ffa42d;
+      }
+    }
+  }
+  &.error {
+    .buffer-head {
+      .progress {
+        background: #ff5240;
+      }
+    }
+  }
 }
 
 // View mode
