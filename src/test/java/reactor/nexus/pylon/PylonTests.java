@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Test;
 import reactor.core.scheduler.Schedulers;
 import reactor.core.subscriber.SubmissionEmitter;
-import reactor.core.util.Exceptions;
+import reactor.util.Exceptions;
 import reactor.io.netty.nexus.Nexus;
 
 /**
