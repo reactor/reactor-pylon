@@ -36,15 +36,14 @@ import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.http.HttpHeaderNames;
 import org.reactivestreams.Publisher;
 import reactor.core.publisher.Mono;
-import reactor.core.scheduler.TimedScheduler;
-import reactor.util.Logger;
-import reactor.util.Loggers;
 import reactor.io.ipc.Channel;
 import reactor.io.ipc.ChannelHandler;
 import reactor.io.netty.common.Peer;
 import reactor.io.netty.http.HttpChannel;
 import reactor.io.netty.http.HttpMappings;
 import reactor.io.netty.http.HttpServer;
+import reactor.util.Logger;
+import reactor.util.Loggers;
 
 /**
  * @author Stephane Maldini
@@ -154,8 +153,7 @@ public final class Pylon extends Peer<ByteBuf, ByteBuf, Channel<ByteBuf, ByteBuf
 		return staticPath + target;
 	}
 
-	private Pylon(TimedScheduler defaultTimer, HttpServer server, String staticPath) {
-		super(defaultTimer);
+	private Pylon(HttpServer server, String staticPath) {
 		this.staticPath = staticPath;
 		this.server = server;
 	}
