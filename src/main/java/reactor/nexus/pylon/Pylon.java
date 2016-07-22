@@ -36,11 +36,11 @@ import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.http.HttpHeaderNames;
 import org.reactivestreams.Publisher;
 import reactor.core.publisher.Mono;
-import reactor.io.ipc.Channel;
-import reactor.io.netty.common.DuplexSocket;
-import reactor.io.netty.http.HttpChannel;
-import reactor.io.netty.http.HttpMappings;
-import reactor.io.netty.http.HttpServer;
+import reactor.ipc.ipc.Channel;
+import reactor.ipc.netty.common.DuplexSocket;
+import reactor.ipc.netty.http.HttpChannel;
+import reactor.ipc.netty.http.HttpMappings;
+import reactor.ipc.netty.http.HttpServer;
 import reactor.util.Logger;
 import reactor.util.Loggers;
 
