@@ -36,7 +36,7 @@ import io.netty.buffer.ByteBuf;
 import io.netty.handler.codec.http.HttpHeaderNames;
 import org.reactivestreams.Publisher;
 import reactor.core.publisher.Mono;
-import reactor.ipc.ipc.Channel;
+import reactor.ipc.Channel;
 import reactor.ipc.netty.common.DuplexSocket;
 import reactor.ipc.netty.http.HttpChannel;
 import reactor.ipc.netty.http.HttpMappings;
